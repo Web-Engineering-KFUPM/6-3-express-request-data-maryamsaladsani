@@ -107,12 +107,12 @@ LAB SETUP INSTRUCTIONS
 import express from "express";
 const app = express();
 
-// create server
+// TODO01 : create server
 app.listen(3000, () => {
  console.log("API running at http://localhost:3000");
 });
 
-// Query params: /echo?name=Ali&age=22
+// TODO02 : Query params: /echo?name=Ali&age=22
 app.get("/echo", (req, res) => {
  // Extract info
  const { name, age } = req.query;
@@ -125,8 +125,14 @@ app.get("/echo", (req, res) => {
  res.json({ ok: true, name, age, msg: `Hello ${name}, you are ${age}` });
 });
 
-// Route params: /profile/First/Last
-
+// TODO03 : Route params: /profile/First/Last
+app.get("/profile/:first/:last", (req, res) => {
+ const { first, last } = req.params;
+ res.json({
+  ok: true,
+  fullName: `${first} ${last}`,
+ });
+});
 
 // Route param middleware example: /users/42
 
