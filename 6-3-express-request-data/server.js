@@ -107,12 +107,17 @@ LAB SETUP INSTRUCTIONS
 import express from "express";
 const app = express();
 
-// TODO01 : create server
+// TODO-01 : create server
+// just for checking
+app.get("/", (req, res) => {
+ res.json({ ok: true, msg: "API running" });
+});
+// main
 app.listen(3000, () => {
  console.log("API running at http://localhost:3000");
 });
 
-// TODO02 : Query params: /echo?name=Ali&age=22
+// TODO-02 : Query params: /echo?name=Ali&age=22
 app.get("/echo", (req, res) => {
  // Extract info
  const { name, age } = req.query;
@@ -125,7 +130,7 @@ app.get("/echo", (req, res) => {
  res.json({ ok: true, name, age, msg: `Hello ${name}, you are ${age}` });
 });
 
-// TODO03 : Route params: /profile/First/Last
+// TODO-03 : Route params: /profile/First/Last
 app.get("/profile/:first/:last", (req, res) => {
  const { first, last } = req.params;
  res.json({
@@ -134,7 +139,7 @@ app.get("/profile/:first/:last", (req, res) => {
  });
 });
 
-// TODO04 : Route param middleware example: /users/42
+// TODO-04 : Route param middleware example: /users/42
 app.param("userId", (req, res, next, userId) => {
  const userIdNum = Number(userId);
 
@@ -151,7 +156,7 @@ app.param("userId", (req, res, next, userId) => {
  next();
 });
 
-// TODO05 : Route params: /users/:userId route
+// TODO-05 : Route params: /users/:userId route
 app.get("/users/:userId", (req, res) => {
  res.json({
   ok: true,
